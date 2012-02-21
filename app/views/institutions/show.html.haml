@@ -13,6 +13,10 @@
     %span
       %b= @institution.address
   %li
+    %label Опубликовано:
+    %span
+      %b= @institution.published ? 'Да' : 'Нет'
+  %li
     = link_to 'Редактировать', edit_institution_path(@institution)
     = link_to 'Удалить', institution_path(@institution), :method => :delete
 %br

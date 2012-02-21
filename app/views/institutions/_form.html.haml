@@ -2,14 +2,7 @@
   = f.inputs do
     = f.input :title, :label => 'Название'
     = f.input :address, :label => 'Адрес'
-    -#= f.input :institution_kinds, :as => :check_boxes
-
-    -#- InstitutionKind.all.each do |kind|
-    -#  - kind.attributes.each do |attribute|
-    -#    = f.semantic_form_for AttributeString.new do |a|
-    -#      = a.inputs
-    -#        = a.input :value
-
+    = f.input :published, :as => :boolean, :label => 'Опубликовано'
 
     = f.buttons do
       = f.commit_button 'Сохранить'

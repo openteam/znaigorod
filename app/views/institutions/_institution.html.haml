@@ -1,5 +1,6 @@
 %tr
   %td= link_to institution.title, institution_path(institution)
+  %td= institution.published ? 'Да' : 'Нет'
   %td.commands
     = link_to 'удалить', institution_path(institution), :method => :delete
     = link_to 'редактировать', edit_institution_path(institution)

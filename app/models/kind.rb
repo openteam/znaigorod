@@ -6,6 +6,8 @@ class Kind < ActiveRecord::Base
   has_many :attribute_strings
   has_many :attribute_booleans
 
+  scope :published, includes(:institution).where(:institutions => {:published => true})
+
   def attributes
     @attributes ||= [attribute_strings.all + attribute_booleans.all].flatten.compact
   end

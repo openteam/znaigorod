@@ -1,0 +1,8 @@
+.filter
+  - InstitutionKind.all.each do |kind|
+    = link_to kind.title, root_path(:kind => kind.id)
+    &nbsp;&nbsp;
+
+- if params[:kind]
+  = @kinds.inspect
+  = render :partial => 'index/kind', :collection => @kinds

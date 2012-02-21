@@ -1,0 +1,11 @@
+.breadcrumbs
+  = link_to 'Заведения', institutions_path
+  >
+  = link_to @kind.institution.title, institution_path(@kind.institution)
+  >
+  = @kind.institution_kind.title
+
+= semantic_form_for [@kind.institution, @kind] do |f|
+  = f.inputs do
+    - @kind.institution_kind.attributes.each do |attribute|
+      = raw attribute_tag(attribute, @kind.attributes_hash[attribute.kind.to_sym][attribute.id] )

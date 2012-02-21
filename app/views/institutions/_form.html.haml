@@ -1,0 +1,19 @@
+= semantic_form_for resource do |f|
+  = f.inputs do
+    = f.input :title, :label => 'Название'
+    = f.input :address, :label => 'Адрес'
+    -#= f.input :institution_kinds, :as => :check_boxes
+
+    -#- InstitutionKind.all.each do |kind|
+    -#  - kind.attributes.each do |attribute|
+    -#    = f.semantic_form_for AttributeString.new do |a|
+    -#      = a.inputs
+    -#        = a.input :value
+
+
+    = f.buttons do
+      = f.commit_button 'Сохранить'
+      - if resource.persisted?
+        = link_to 'удалить', resource_path(resource), :method => :delete
+      - else
+        = link_to 'Отмена', collection_path

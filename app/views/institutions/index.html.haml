@@ -1,0 +1,11 @@
+.breadcrumbs
+  Заведения
+
+= link_to 'Новое заведение', new_institution_path, :class => :new_link
+
+%table.obj_table
+  %thead
+    %th Заведение
+    %th
+  %tbody
+    = render collection

@@ -1,0 +1,10 @@
+= semantic_form_for [resource.institution_class, resource] do |f|
+  = f.inputs do
+    = f.input :title, :label => 'Тип заведения'
+    = f.buttons do
+      = f.commit_button 'Сохранить'
+      %li
+        - if resource.persisted?
+          = link_to 'Удалить', institution_class_institution_kind_path(resource.institution_class,resource), :method => :delete
+        - else
+          = link_to 'Отмена', resource.institution_class

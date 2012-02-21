@@ -1,0 +1,22 @@
+.breadcrumbs
+  = link_to 'Заведения', institutions_path
+  >
+  = @institution.title
+
+%ul
+  %li
+    %label Название:
+    %span
+      %b= @institution.title
+  %li
+    %label Адресс:
+    %span
+      %b= @institution.address
+  %li
+    = link_to 'Редактировать', edit_institution_path(@institution)
+    = link_to 'Удалить', institution_path(@institution), :method => :delete
+%br
+%br
+= form_tag(add_kind_institution_path(@institution), :method => :get, :id => 'add_kind_form') do
+  = select_tag "institution_kind", options_from_collection_for_select(InstitutionKind.all, 'id', 'title')
+  = submit_tag 'Добавить тип'

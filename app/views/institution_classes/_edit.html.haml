@@ -1,0 +1,15 @@
+.breadcrumbs
+  = link_to 'Классы заведений', institution_classes_path
+  >
+  = resource.title
+= render :partial => 'form'
+
+%br
+%br
+= link_to 'Новый тип', new_institution_class_institution_kind_path(resource)
+%table.obj_table
+  %thead
+    %th Типы заведений
+    %th
+  %tbody
+    = render resource.institution_kinds

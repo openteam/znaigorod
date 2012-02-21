@@ -1,0 +1,11 @@
+.breadcrumbs
+  Классы заведений
+
+= link_to 'Новый класс', new_institution_class_path, :class => :new_link
+
+%table.obj_table
+  %thead
+    %th Классы заведений
+    %th
+  %tbody
+    = render collection

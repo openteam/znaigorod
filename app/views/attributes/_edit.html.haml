@@ -1,0 +1,10 @@
+.breadcrumbs
+  = link_to 'Классы заведений', institution_classes_path
+  >
+  = link_to resource.institution_kind.institution_class.title, resource.institution_kind.institution_class
+  >
+  = link_to resource.institution_kind.title, institution_class_institution_kind_path(resource.institution_kind.institution_class, resource.institution_kind)
+  >
+  = resource.title
+
+= render 'form'

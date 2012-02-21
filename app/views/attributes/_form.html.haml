@@ -1,0 +1,14 @@
+= semantic_form_for [resource.institution_kind.institution_class, resource.institution_kind, resource] do |f|
+  = f.inputs do
+    = f.input :kind, :label => 'Тип', :as => :select, :collection => Attribute::KINDS.map {|k, v| [k,k]}, :include_blank => false, :input_html => {:disabled => resource.persisted?}
+    = f.input :title, :label => 'Название'
+    = f.input :required, :label => 'Обязательный'
+    = f.input :searchable, :label => 'Участвует в поиска'
+
+    = f.buttons do
+      = f.commit_button 'Сохранить'
+      %li
+        - if resource.persisted?
+          = link_to 'удалить', institution_class_institution_kind_attribute_path(resource.institution_kind.institution_class, resource.institution_kind, resource), :method => :delete
+        - else
+          = link_to 'Отмена', institution_class_institution_kind_path(resource.institution_kind.institution_class, resource.institution_kind)

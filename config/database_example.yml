@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: znaigorod_development
+  pool: 5
+  username: znaigorod
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: znaigorod_test
+  pool: 5
+  username: znaigorod
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: znaigorod_production
+  pool: 5
+  username: znaigorod
+  password:

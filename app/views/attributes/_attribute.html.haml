@@ -1,0 +1,7 @@
+%tr
+  %td= link_to attribute.title, edit_institution_class_institution_kind_attribute_path(attribute.institution_kind.institution_class,attribute.institution_kind, attribute)
+  %td= attribute.kind
+  %td= attribute.required
+  %td= attribute.searchable
+
+  %td.commands= link_to 'удалить', institution_class_institution_kind_attribute_path(attribute.institution_kind.institution_class,attribute.institution_kind, attribute), :method => :delete

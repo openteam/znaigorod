@@ -1,0 +1,21 @@
+.breadcrumbs
+  = link_to 'Классы заведений', institution_classes_path
+  >
+  = link_to resource.institution_class.title, resource.institution_class
+  >
+  = resource.title
+
+= render 'form'
+
+%br
+%br
+= link_to 'Новый аттрибут', new_institution_class_institution_kind_attribute_path(resource.institution_class,resource)
+%table.obj_table
+  %thead
+    %th Аттрибут
+    %th Тип
+    %th Обязательный
+    %th Участвует в поиске
+    %th
+  %tbody
+    = render resource.attributes

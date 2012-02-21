@@ -22,5 +22,13 @@
 %br
 %br
 = form_tag(add_kind_institution_path(@institution), :method => :get, :id => 'add_kind_form') do
-  = select_tag "institution_kind", options_from_collection_for_select(InstitutionKind.all, 'id', 'title')
+  = select_tag "institution_kind", options_from_collection_for_select(InstitutionKind.available_for(@institution), 'id', 'title')
   = submit_tag 'Добавить тип'
+
+%table.obj_table
+  %thead
+    %th Тип
+    %th Аттрибуты
+    %th
+  %tbody
+    = render @institution.kinds

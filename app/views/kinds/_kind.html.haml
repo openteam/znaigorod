@@ -1,0 +1,8 @@
+%tr
+  %td= kind.institution_kind.title
+  %td
+    %ul
+      - kind.institution_kind.attributes.each do |attribute|
+        = raw attribute_value_tag(attribute, kind.attributes_hash[attribute.kind.to_sym][attribute.id] )
+  %td.commands
+

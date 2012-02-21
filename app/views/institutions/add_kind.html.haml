@@ -6,6 +6,10 @@
   = @kind.institution_kind.title
 
 = semantic_form_for [@kind.institution, @kind] do |f|
+  = hidden_field_tag :institution_kind, @kind.institution_kind.id
   = f.inputs do
     - @kind.institution_kind.attributes.each do |attribute|
       = raw attribute_tag(attribute, @kind.attributes_hash[attribute.kind.to_sym][attribute.id] )
+  = f.buttons do
+    = f.commit_button 'Сохранить'
+    = link_to 'Отмена', collection_path

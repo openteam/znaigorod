@@ -15,16 +15,16 @@ class Kind < ActiveRecord::Base
   def attributes_hash
     unless @attributes_hash
       @attributes_hash = {}
-      @attributes_hash[:string] = attribute_strings.each_with_object({}) { |h, f| h[f.attribute_id] = f }
-      @attributes_hash[:boolean] = attribute_booleans.each_with_object({}) { |h, f| h[f.attribute_id] = f }
-      build
+      Znaigorod::Application::Attribute::KINDS.keys.each do |key|
+        @attributes_hash[key] = {}
+        attribute_strings.each { |attr| @attributes_hash[key][attr.attribute_id] = attr }
+      end
+      build_hashes
     end
     @attributes_hash
   end
 
-private
-
-  def build
+  def build_hashes
     return unless institution_kind
     institution_kind.attributes.each do |attribute|
       unless attributes_hash[attribute.kind.to_sym][attribute.id]
@@ -37,6 +37,16 @@ private
         end
       end
     end
+  end
+
+  def validate_kind
+    result = valid?
+    attributes_hash.each do |k,v|
+      v.each do |id, attr|
+        result = (result and attr.valid?)
+      end
+    end
+    return result
   end
 
 end

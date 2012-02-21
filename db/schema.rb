@@ -14,13 +14,13 @@
 ActiveRecord::Schema.define(:version => 20120221093554) do
 
   create_table "attribute_booleans", :force => true do |t|
-    t.integer "institution_id"
+    t.integer "kind_id"
     t.integer "attribute_id"
     t.boolean "value"
   end
 
   create_table "attribute_strings", :force => true do |t|
-    t.integer "institution_id"
+    t.integer "kind_id"
     t.integer "attribute_id"
     t.string  "value"
   end

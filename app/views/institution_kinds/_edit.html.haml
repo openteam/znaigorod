@@ -1,4 +1,4 @@
-.breadcrumbs
+%blockquote
   = link_to 'Классы заведений', institution_classes_path
   >
   = link_to resource.institution_class.title, resource.institution_class
@@ -9,13 +9,15 @@
 
 %br
 %br
-= link_to 'Новый аттрибут', new_institution_class_institution_kind_attribute_path(resource.institution_class,resource)
-%table.obj_table
-  %thead
-    %th Аттрибут
-    %th Тип
-    %th Обязательный
-    %th Участвует в поиске
-    %th
-  %tbody
-    = render resource.attributes
+= link_to 'Новый аттрибут', new_institution_class_institution_kind_attribute_path(resource.institution_class,resource), :class => 'ym-button ym-add'
+
+- if resource.attributes.any?
+  %table.bordertable
+    %thead
+      %th Аттрибут
+      %th Тип
+      %th Обязательный
+      %th Участвует в поиске
+      %th
+    %tbody
+      = render resource.attributes

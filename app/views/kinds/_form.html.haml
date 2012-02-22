@@ -1,0 +1,11 @@
+.ym-form.ym-columnar
+  = semantic_form_for [resource.institution, resource] do |f|
+    = hidden_field_tag :institution_kind, resource.institution_kind.id
+    = f.inputs do
+      - resource.institution_kind.attributes.each do |attribute|
+        = raw attribute_tag(attribute, resource.attributes_hash[attribute.kind.to_sym][attribute.id] )
+    .ym-fbox-button
+      = button_tag 'Сохранить', :class => 'ym-button ym-save'
+      - if resource.persisted?
+        = link_to 'Удалить', institution_kind_path(resource.institution_kind, resource) , :method => :delete, :class =>'ym-button ym-delete'
+      = link_to 'Отмена', resource.institution, :class =>'ym-button'

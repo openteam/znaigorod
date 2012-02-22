@@ -1,10 +1,10 @@
-= semantic_form_for [resource.institution_class, resource] do |f|
-  = f.inputs do
-    = f.input :title, :label => 'Тип заведения'
-    = f.buttons do
-      = f.commit_button 'Сохранить'
-      %li
-        - if resource.persisted?
-          = link_to 'Удалить', institution_class_institution_kind_path(resource.institution_class,resource), :method => :delete
-        - else
-          = link_to 'Отмена', resource.institution_class
+.ym-form.ym-columnar
+  = semantic_form_for [resource.institution_class, resource] do |f|
+    = f.inputs do
+      = f.input :title, :label => 'Тип заведения', :wrapper_html => {:class => 'ym-fbox-text'}
+    .ym-fbox-button
+      = button_tag 'Сохранить', :class => 'ym-button ym-save'
+      - if resource.persisted?
+        = link_to 'Удалить', institution_class_institution_kind_path(resource.institution_class,resource), :method => :delete, :class =>'ym-button ym-delete'
+      - else
+        = link_to 'Отмена', resource.institution_class, :class =>'ym-button'

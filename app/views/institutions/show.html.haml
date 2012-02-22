@@ -1,34 +1,35 @@
-.breadcrumbs
+%blockquote
   = link_to 'Заведения', institutions_path
   >
   = @institution.title
 
-%ul
-  %li
-    %label Название:
-    %span
-      %b= @institution.title
-  %li
-    %label Адресс:
-    %span
-      %b= @institution.address
-  %li
-    %label Опубликовано:
-    %span
-      %b= @institution.published ? 'Да' : 'Нет'
-  %li
-    = link_to 'Редактировать', edit_institution_path(@institution)
-    = link_to 'Удалить', institution_path(@institution), :method => :delete
-%br
-%br
-= form_tag(add_kind_institution_path(@institution), :method => :get, :id => 'add_kind_form') do
-  = select_tag "institution_kind", options_from_collection_for_select(InstitutionKind.available_for(@institution), 'id', 'title')
-  = submit_tag 'Добавить тип'
+.box.info
+  %ul
+    %li
+      %label Название:
+      %span
+        %b= @institution.title
+    %li
+      %label Адресс:
+      %span
+        %b= @institution.address
+    %li
+      %label Опубликовано:
+      %span
+        %b= @institution.published ? 'Да' : 'Нет'
+  = link_to 'Редактировать', edit_institution_path(@institution), :class => 'ym-button ym-edit'
+  = link_to 'Удалить', institution_path(@institution), :method => :delete, :class => 'ym-button ym-delete'
 
-%table.obj_table
+%br
+  %br
+= form_tag(new_institution_kind_path(@institution), :method => :get, :id => 'add_kind_form') do
+  = select_tag "institution_kind", options_from_collection_for_select(InstitutionKind.available_for(@institution), 'id', 'title'), :class => 'ym-fbox-select'
+  = button_tag 'Добавить тип', :class => 'ym-button ym-add'
+
+%table.bordertable
   %thead
     %th Тип
     %th Аттрибуты
-    %th
+    %th{:width=>'350px'}
   %tbody
     = render @institution.kinds

@@ -1,10 +1,16 @@
 module ApplicationHelper
 
+  KIND_CLASSES = {
+      'boolean' => 'ym-fbox-check',
+      'string' => 'ym-fbox-text'
+  }
+
   def attribute_tag(attribute, value_object = nil)
     result = ''
-    result << '<li>'
-    result << label_tag("attribute#{attribute.id}", attribute.title)
+    result << "<li class = '#{KIND_CLASSES[attribute.kind]}'>"
+    result << "<label for='attribute#{attribute.id}'>#{attribute.title}"
     result << '<abbr>*</abbr>' if attribute.required
+    result << "</label>"
     result << send("attribute_tag_#{attribute.kind}", attribute, value_object ? value_object.value : nil)
     result << "<span class='inline_errors'>#{value_object.errors.messages[:value].join(', ')}</span>" if value_object.errors and value_object.errors.any?
     result << '</li>'

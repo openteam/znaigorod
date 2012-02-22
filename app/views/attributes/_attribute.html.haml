@@ -3,5 +3,4 @@
   %td= attribute.kind
   %td= attribute.required
   %td= attribute.searchable
-
-  %td.commands= link_to 'удалить', institution_class_institution_kind_attribute_path(attribute.institution_kind.institution_class,attribute.institution_kind, attribute), :method => :delete
+  %td.commands= link_to 'удалить', institution_class_institution_kind_attribute_path(attribute.institution_kind.institution_class,attribute.institution_kind, attribute), :method => :delete, :class =>'ym-button ym-delete'

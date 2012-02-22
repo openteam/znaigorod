@@ -4,5 +4,6 @@
     &nbsp;&nbsp;
 
 - if params[:kind]
-  = @kinds.inspect
-  = render :partial => 'index/kind', :collection => @kinds
+  %table.bordertable
+    %tbody
+      = render :partial => 'index/kind', :collection => @kinds

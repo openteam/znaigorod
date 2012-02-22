@@ -1,20 +1,27 @@
 !!!
 %html
   %head
-    %title Institutions
+    %title Znaigorod
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "content-type"}
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
 %body
+  %header
+    .ym-wrapper
+      .ym-wbox
+        %h1 Znaigorod
+  %nav#nav
+    .ym-wrapper
+      .ym-hlist
+        %ul
+          %li{:class => controller_name == 'index' ? 'active' : ''}= link_to 'Главная', root_path
+          %li{:class => ['institution_classes', 'institution_kinds', 'attributes'].include?(controller_name) ? 'active' : ''}= link_to 'Классы заведений', institution_classes_path
+          %li{:class => controller_name == 'institutions' ? 'active' : ''}= link_to 'Заведения', institutions_path
+  #main
+    .ym-wrapper
+      .ym-wbox
+        = yield
 
-  %ul.top_menu
-    %li
-      = link_to 'Главная', root_path
-      |
-      &nbsp;&nbsp;
-      = link_to 'Классы заведений', institution_classes_path
-      = link_to 'Заведения', institutions_path
-
-
-  = yield
+  %footer.footer
+    &copy; 2012

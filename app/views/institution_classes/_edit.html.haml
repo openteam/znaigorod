@@ -1,15 +1,16 @@
-.breadcrumbs
+%blockquote
   = link_to 'Классы заведений', institution_classes_path
   >
-  = resource.title
+  = resource.title_was
+
 = render :partial => 'form'
 
 %br
 %br
-= link_to 'Новый тип', new_institution_class_institution_kind_path(resource)
-%table.obj_table
+= link_to 'Новый тип', new_institution_class_institution_kind_path(resource), :class => 'ym-button ym-add'
+%table.bordertable
   %thead
     %th Типы заведений
-    %th
+    %th{:width =>'200px'}
   %tbody
     = render resource.institution_kinds

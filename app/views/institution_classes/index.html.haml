@@ -1,11 +1,12 @@
-.breadcrumbs
+%blockquote
   Классы заведений
 
-= link_to 'Новый класс', new_institution_class_path, :class => :new_link
+= link_to 'Новый класс', new_institution_class_path, :class => 'ym-button ym-add'
 
-%table.obj_table
+%table.bordertable
   %thead
     %th Классы заведений
-    %th
+    %th{:width => '150px'} Количество типов
+    %th{:width => '200px'}
   %tbody
     = render collection

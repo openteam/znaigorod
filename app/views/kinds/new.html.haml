@@ -1,0 +1,8 @@
+%blockquote
+  = link_to 'Заведения', institutions_path
+  >
+  = link_to resource.institution.title, resource.institution
+  >
+  = resource.institution_kind.title
+
+= render 'form', :locals => {:resource => @kind}

@@ -7,7 +7,7 @@ Znaigorod::Application.routes.draw do
   end
 
   resources :institution_classes do
-    resources :institution_kinds do
+    resources :institution_kinds, :except => [:index] do
       resources :attributes
     end
   end

@@ -2,8 +2,8 @@
   %td= kind.institution_kind.title
   %td
     %ul
-      - kind.institution_kind.attributes.each do |attribute|
-        = raw attribute_value_tag(attribute, kind.attributes_hash[attribute.kind.to_sym][attribute.id] )
+      - kind.institution_kind.attrs.each do |parameter|
+        = raw parameter_value_tag(parameter, kind.parameters_hash[parameter.kind.to_sym][parameter.id] )
   %td.commands
     = link_to 'Удалить', institution_kind_path(kind.institution,kind), :method => :delete, :class =>'ym-button ym-delete'
     = link_to 'Редактировать', institution_kind_path(kind.institution,kind), :class =>'ym-button ym-edit'

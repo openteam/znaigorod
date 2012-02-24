@@ -21,10 +21,10 @@ class KindsController < InheritedResources::Base
     @kind = Kind.where(:id => params[:id], :institution_id => institution).first
     @kind.build_hashes
 
-    params[:attribute].each do |type, attr|
-      attributes = @kind.attributes_hash[type.to_sym]
+    params[:parameter].each do |type, attr|
+      parameters = @kind.parameters_hash[type.to_sym]
       attr.each do |id, value|
-        attributes[id.to_i].value = value
+        parameters[id.to_i].value = value
       end
     end
 
@@ -33,11 +33,10 @@ class KindsController < InheritedResources::Base
         @kind.save
 
         logger.warn @kind.inspect
-        @kind.attributes_hash.each do |kind, attributes|
-          attributes.each do |id, attribute|
-            logger.warn attribute.inspect
-            attribute.kind = @kind
-            attribute.save if attribute.value != nil
+        @kind.parameters_hash.each do |kind, parameters|
+          parameters.each do |id, parameter|
+            parameter.kind = @kind
+            parameter.save if parameter.value != nil
           end
         end
       end
@@ -55,10 +54,10 @@ class KindsController < InheritedResources::Base
     @kind = Kind.new(:institution => institution, :institution_kind => institution_kind)
     @kind.build_hashes
 
-    params[:attribute].each do |type, attr|
-      attributes = @kind.attributes_hash[type.to_sym]
+    params[:parameter].each do |type, attr|
+      parameters = @kind.parameters_hash[type.to_sym]
       attr.each do |id, value|
-        attributes[id.to_i].value = value
+        parameters[id.to_i].value = value
       end
     end
 
@@ -67,11 +66,11 @@ class KindsController < InheritedResources::Base
         @kind.save
 
         logger.warn @kind.inspect
-        @kind.attributes_hash.each do |kind, attributes|
-          attributes.each do |id, attribute|
-            logger.warn attribute.inspect
-            attribute.kind = @kind
-            attribute.save if attribute.value != nil
+        @kind.parameters_hash.each do |kind, parameters|
+          parameters.each do |id, parameter|
+            logger.warn parameter.inspect
+            parameter.kind = @kind
+            parameter.save if parameter.value != nil
           end
         end
       end

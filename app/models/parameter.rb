@@ -1,7 +1,9 @@
-class Attribute < ActiveRecord::Base
+class Parameter < ActiveRecord::Base
   belongs_to :institution_kind
+  has_many :parameter_strings
+  has_many :parameter_booleans
 
-  KINDS = {:string => AttributeString, :boolean => AttributeBoolean}.freeze
+  KINDS = {:string => ParameterString, :boolean => ParameterBoolean}.freeze
 
   validates_presence_of :title
   validates_uniqueness_of :title, :scope => [:institution_kind_id]

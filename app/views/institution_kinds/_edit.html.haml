@@ -9,9 +9,9 @@
 
 %br
 %br
-= link_to 'Новый аттрибут', new_institution_class_institution_kind_attribute_path(resource.institution_class,resource), :class => 'ym-button ym-add'
+= link_to 'Новый аттрибут', new_institution_class_institution_kind_parameter_path(resource.institution_class,resource), :class => 'ym-button ym-add'
 
-- if resource.attributes.any?
+- if resource.attrs.any?
   %table.bordertable
     %thead
       %th Аттрибут
@@ -20,4 +20,4 @@
       %th Участвует в поиске
       %th
     %tbody
-      = render resource.attributes
+      = render resource.attrs

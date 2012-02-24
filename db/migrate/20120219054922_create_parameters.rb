@@ -1,6 +1,6 @@
-class CreateAttributes < ActiveRecord::Migration
+class CreateParameters < ActiveRecord::Migration
   def change
-    create_table :attributes do |t|
+    create_table :parameters do |t|
       t.integer :institution_kind_id
       t.string :title
       t.string :kind

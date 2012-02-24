@@ -1,0 +1,6 @@
+%tr
+  %td= link_to parameter.title, edit_institution_class_institution_kind_parameter_path(parameter.institution_kind.institution_class,parameter.institution_kind, parameter)
+  %td= parameter.kind
+  %td= parameter.required
+  %td= parameter.searchable
+  %td.commands= link_to 'удалить', institution_class_institution_kind_parameter_path(parameter.institution_kind.institution_class,parameter.institution_kind, parameter), :method => :delete, :class =>'ym-button ym-delete'

@@ -1,6 +1,6 @@
 class InstitutionKind < ActiveRecord::Base
-  has_many :attributes
-  has_many :kinds
+  has_many :parameters, :dependent => :destroy
+  has_many :kinds, :dependent => :destroy
   belongs_to :institution_class
 
   validates_presence_of :title

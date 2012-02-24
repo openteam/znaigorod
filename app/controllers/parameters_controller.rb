@@ -1,4 +1,4 @@
-class AttributesController < InheritedResources::Base
+class ParametersController < InheritedResources::Base
   belongs_to :institution_kind
 
   def create

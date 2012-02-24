@@ -13,28 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20120221093554) do
 
-  create_table "attribute_booleans", :force => true do |t|
-    t.integer "kind_id"
-    t.integer "attribute_id"
-    t.boolean "value"
-  end
-
-  create_table "attribute_strings", :force => true do |t|
-    t.integer "kind_id"
-    t.integer "attribute_id"
-    t.string  "value"
-  end
-
-  create_table "attributes", :force => true do |t|
-    t.integer  "institution_kind_id"
-    t.string   "title"
-    t.string   "kind"
-    t.boolean  "required"
-    t.boolean  "searchable"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-  end
-
   create_table "institution_classes", :force => true do |t|
     t.string   "title",      :null => false
     t.datetime "created_at", :null => false
@@ -53,27 +31,40 @@ ActiveRecord::Schema.define(:version => 20120221093554) do
   add_index "institution_kinds", ["institution_class_id", "title"], :name => "index_institution_kinds_on_institution_class_id_and_title", :unique => true
 
   create_table "institutions", :force => true do |t|
-    t.string   "title",             :null => false
-    t.string   "address",           :null => false
-    t.integer  "attributable_id"
-    t.string   "attributable_type"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.string   "title",      :null => false
+    t.string   "address",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.boolean  "published"
   end
 
   add_index "institutions", ["title", "address"], :name => "index_institutions_on_title_and_address"
 
-  create_table "institutions_institution_kinds", :id => false, :force => true do |t|
-    t.integer "institution_id"
-    t.integer "institution_kind_id"
-  end
-
-  add_index "institutions_institution_kinds", ["institution_id", "institution_kind_id"], :name => "institutions_institution_kinds_idx", :unique => true
-
   create_table "kinds", :force => true do |t|
     t.integer  "institution_id"
     t.integer  "institution_kind_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "parameter_booleans", :force => true do |t|
+    t.integer "kind_id"
+    t.integer "parameter_id"
+    t.boolean "value"
+  end
+
+  create_table "parameter_strings", :force => true do |t|
+    t.integer "kind_id"
+    t.integer "parameter_id"
+    t.string  "value"
+  end
+
+  create_table "parameters", :force => true do |t|
+    t.integer  "institution_kind_id"
+    t.string   "title"
+    t.string   "kind"
+    t.boolean  "required"
+    t.boolean  "searchable"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
   end

@@ -16,7 +16,7 @@
       .ym-hlist
         %ul
           %li{:class => controller_name == 'index' ? 'active' : ''}= link_to 'Главная', root_path
-          %li{:class => ['institution_classes', 'institution_kinds', 'attrs'].include?(controller_name) ? 'active' : ''}= link_to 'Классы заведений', institution_classes_path
+          %li{:class => ['institution_classes', 'institution_kinds', 'parameters'].include?(controller_name) ? 'active' : ''}= link_to 'Классы заведений', institution_classes_path
           %li{:class => controller_name == 'institutions' ? 'active' : ''}= link_to 'Заведения', institutions_path
   #main
     .ym-wrapper

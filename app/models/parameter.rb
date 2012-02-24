@@ -1,7 +1,7 @@
 class Parameter < ActiveRecord::Base
   belongs_to :institution_kind
-  has_many :parameter_strings
-  has_many :parameter_booleans
+  has_many :parameter_strings, :dependent => :destroy
+  has_many :parameter_booleans, :dependent => :destroy
 
   KINDS = {:string => ParameterString, :boolean => ParameterBoolean}.freeze
 

@@ -21,10 +21,12 @@ class KindsController < InheritedResources::Base
     @kind = Kind.where(:id => params[:id], :institution_id => institution).first
     @kind.build_hashes
 
-    params[:parameter].each do |type, attr|
-      parameters = @kind.parameters_hash[type.to_sym]
-      attr.each do |id, value|
-        parameters[id.to_i].value = value
+    if params[:parameter]
+      params[:parameter].each do |type, attr|
+        parameters = @kind.parameters_hash[type.to_sym]
+        attr.each do |id, value|
+          parameters[id.to_i].value = value
+        end
       end
     end
 
@@ -32,7 +34,6 @@ class KindsController < InheritedResources::Base
       ActiveRecord::Base.transaction do
         @kind.save
 
-        logger.warn @kind.inspect
         @kind.parameters_hash.each do |kind, parameters|
           parameters.each do |id, parameter|
             parameter.kind = @kind
@@ -54,10 +55,12 @@ class KindsController < InheritedResources::Base
     @kind = Kind.new(:institution => institution, :institution_kind => institution_kind)
     @kind.build_hashes
 
-    params[:parameter].each do |type, attr|
-      parameters = @kind.parameters_hash[type.to_sym]
-      attr.each do |id, value|
-        parameters[id.to_i].value = value
+    if params[:parameter]
+      params[:parameter].each do |type, attr|
+        parameters = @kind.parameters_hash[type.to_sym]
+        attr.each do |id, value|
+          parameters[id.to_i].value = value
+        end
       end
     end
 
@@ -65,10 +68,8 @@ class KindsController < InheritedResources::Base
       ActiveRecord::Base.transaction do
         @kind.save
 
-        logger.warn @kind.inspect
         @kind.parameters_hash.each do |kind, parameters|
           parameters.each do |id, parameter|
-            logger.warn parameter.inspect
             parameter.kind = @kind
             parameter.save if parameter.value != nil
           end

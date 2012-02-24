@@ -1,7 +1,7 @@
 .ym-form.ym-columnar
   = semantic_form_for [resource.institution_kind.institution_class, resource.institution_kind, resource] do |f|
     = f.inputs do
-      = f.input :kind, :label => 'Тип', :as => :select, :collection => Attr::KINDS.map {|k, v| [k,k]}, :include_blank => false, :input_html => {:disabled => resource.persisted?}, :wrapper_html => {:class => 'ym-fbox-select'}
+      = f.input :kind, :label => 'Тип', :as => :select, :collection => Parameter::KINDS.map {|k, v| [k,k]}, :include_blank => false, :input_html => {:disabled => resource.persisted?}, :wrapper_html => {:class => 'ym-fbox-select'}
       = f.input :title, :label => 'Название', :wrapper_html => {:class => 'ym-fbox-text'}
       = f.input :required, :label => 'Обязательный', :wrapper_html => {:class => 'ym-fbox-check'}
       = f.input :searchable, :label => 'Участвует в поиска', :wrapper_html => {:class => 'ym-fbox-check'}

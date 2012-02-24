@@ -21,10 +21,11 @@
   = link_to 'Удалить', institution_path(@institution), :method => :delete, :class => 'ym-button ym-delete'
 
 %br
-  %br
-= form_tag(new_institution_kind_path(@institution), :method => :get, :id => 'add_kind_form') do
-  = select_tag "institution_kind", options_from_collection_for_select(InstitutionKind.available_for(@institution), 'id', 'title'), :class => 'ym-fbox-select'
-  = button_tag 'Добавить тип', :class => 'ym-button ym-add'
+%br
+- if InstitutionKind.available_for(@institution).any?
+  = form_tag(new_institution_kind_path(@institution), :method => :get, :id => 'add_kind_form') do
+    = select_tag "institution_kind", options_from_collection_for_select(InstitutionKind.available_for(@institution), 'id', 'title'), :class => 'ym-fbox-select'
+    = button_tag 'Добавить тип', :class => 'ym-button ym-add'
 
 %table.bordertable
   %thead

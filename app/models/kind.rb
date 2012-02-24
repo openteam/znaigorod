@@ -3,19 +3,19 @@ class Kind < ActiveRecord::Base
   belongs_to :institution
 
   # All kind's of parameters
-  has_many :parameter_strings
-  has_many :parameter_booleans
+  has_many :parameter_strings, :dependent => :destroy
+  has_many :parameter_booleans, :dependent => :destroy
 
   scope :published, includes(:institution).where(:institutions => {:published => true})
 
   def parameters
-    @attrs ||= [parameter_strings.all + parameter_booleans.all].flatten.compact
+    @parameters ||= [parameter_strings.all + parameter_booleans.all].flatten.compact
   end
 
   def parameters_hash
     unless @parameters_hash
       @parameters_hash = {}
-      Znaigorod::Application::Parameter::KINDS.keys.each do |key|
+      Parameter::KINDS.keys.each do |key|
         @parameters_hash[key] = {}
         parameter_strings.each { |parameter| @parameters_hash[key][parameter.parameter_id] = parameter }
         parameter_booleans.each { |parameter| @parameters_hash[key][parameter.parameter_id] = parameter }
@@ -27,9 +27,9 @@ class Kind < ActiveRecord::Base
 
   def build_hashes
     return unless institution_kind
-    institution_kind.attrs.each do |parameter|
+    institution_kind.parameters.each do |parameter|
       unless parameters_hash[parameter.kind.to_sym][parameter.id]
-        clazz = Znaigorod::Application::Parameter::KINDS[parameter.kind.to_sym]
+        clazz = Parameter::KINDS[parameter.kind.to_sym]
         if clazz
           obj = clazz.new
           #obj.kind = self

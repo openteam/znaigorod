@@ -2,7 +2,7 @@
   = semantic_form_for [resource.institution, resource] do |f|
     = hidden_field_tag :institution_kind, resource.institution_kind.id
     = f.inputs do
-      - resource.institution_kind.attrs.each do |parameter|
+      - resource.institution_kind.parameters.each do |parameter|
         = raw parameter_tag(parameter, resource.parameters_hash[parameter.kind.to_sym][parameter.id] )
     .ym-fbox-button
       = button_tag 'Сохранить', :class => 'ym-button ym-save'

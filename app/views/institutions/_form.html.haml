@@ -1,12 +1,12 @@
-= semantic_form_for resource do |f|
-  = f.inputs do
-    = f.input :title, :label => 'Название'
-    = f.input :address, :label => 'Адрес'
-    = f.input :published, :as => :boolean, :label => 'Опубликовано'
+.ym-form.ym-columnar
+  = semantic_form_for resource do |f|
+    = f.inputs do
+      = f.input :title, :label => 'Название', :wrapper_html => {:class => 'ym-fbox-text'}
+      = f.input :address, :label => 'Адрес', :wrapper_html => {:class => 'ym-fbox-text'}
+      = f.input :published, :as => :boolean, :label => 'Опубликовано', :wrapper_html => {:class => 'ym-fbox-check'}
 
-    = f.buttons do
-      = f.commit_button 'Сохранить'
+    .ym-fbox-button
+      = button_tag 'Сохранить', :class => 'ym-button ym-save'
       - if resource.persisted?
-        = link_to 'удалить', resource_path(resource), :method => :delete
-      - else
-        = link_to 'Отмена', collection_path
+        = link_to 'Удалить', resource_path(resource), :method => :delete, :class =>'ym-button ym-delete'
+      = link_to 'Отмена', collection_path, :class =>'ym-button'

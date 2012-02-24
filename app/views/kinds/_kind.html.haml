@@ -2,7 +2,7 @@
   %td= kind.institution_kind.title
   %td
     %ul
-      - kind.institution_kind.attrs.each do |parameter|
+      - kind.institution_kind.parameters.each do |parameter|
         = raw parameter_value_tag(parameter, kind.parameters_hash[parameter.kind.to_sym][parameter.id] )
   %td.commands
     = link_to 'Удалить', institution_kind_path(kind.institution,kind), :method => :delete, :class =>'ym-button ym-delete'

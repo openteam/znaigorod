@@ -17,4 +17,20 @@ FactoryGirl.define do
     searchable false
   end
 
+  factory :institution do
+    title "Institution"
+    address "Address"
+  end
+
+  factory :kind do
+    association :institution_kind
+    association :institution
+  end
+
+  factory :parameter_string do
+    value "Value"
+    association :parameter
+    association :kind
+  end
+
 end

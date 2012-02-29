@@ -25,5 +25,6 @@ end
 
 group :production do
   gem 'therubyracer'  , '~> 0.9' , :platforms => :ruby_19
+  gem 'unicorn'
 end
 

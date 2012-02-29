@@ -12,9 +12,9 @@ gem 'formtastic'
 gem 'jquery-rails', '~> 2.0.0'
 
 group :assets do
-  gem 'sass-rails'    , '3.1.4'
-  gem 'coffee-rails'  , '3.1.1'
-  gem 'uglifier'      , '1.0.4'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
 end
 
 group :test do

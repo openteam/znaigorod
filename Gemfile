@@ -21,3 +21,8 @@ group :test do
   gem 'factory_girl_rails', '~> 1.7.0'
   gem 'spork', '~> 0.9.0'
 end
+
+group :production do
+  gem 'therubyracer'  , '~> 0.9' , :platforms => :ruby_19
+end
+
